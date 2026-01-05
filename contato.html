@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fale com a Nexus Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="nc-body">
+  <!-- Header igual ao da landing -->
+  <header class="nc-header nc-header-dark nc-header--contact">
+    <div class="nc-container nc-header-inner nc-header-inner--center">
+      <a href="index.html" class="nc-logo nc-logo-link">
+        <span class="nc-logo-main">NEXUS</span>
+        <span class="nc-logo-accent">LAB</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="nc-contact-section">
+      <div class="nc-container">
+        <div class="nc-contact-card">
+          <header class="nc-contact-header">
+            <h1>Fale com a Nexus Lab</h1>
+            <p>
+              Preencha o formulário abaixo e receba um retorno por e-mail com os próximos passos
+              para implementar agentes de IA no seu atendimento e nas suas vendas.
+            </p>
+          </header>
+
+          <!-- FORMULÁRIO AJUSTADO PARA NETLIFY -->
+          <form
+            class="nc-contact-form"
+            id="nc-contact-form"
+            name="contato"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/contato-sucesso.html"
+          >
+            <!-- Campo obrigatório para Netlify identificar o form -->
+            <input type="hidden" name="form-name" value="contato" />
+
+            <!-- Honeypot anti-spam (não remover o name="bot-field") -->
+            <p style="display:none">
+              <label>
+                Não preencha este campo:
+                <input name="bot-field" />
+              </label>
+            </p>
+
+            <!-- Nome -->
+            <div class="nc-field">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+
+            <!-- Empresa -->
+            <div class="nc-field">
+              <label for="empresa">Nome da empresa</label>
+              <input type="text" id="empresa" name="empresa" required />
+            </div>
+
+            <!-- E-mail + confirmação -->
+            <div class="nc-field nc-field-inline">
+              <div>
+                <label for="email">E-mail de contato</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div>
+                <label for="emailConfirmacao">Confirmar e-mail</label>
+                <input
+                  type="email"
+                  id="emailConfirmacao"
+                  name="emailConfirmacao"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="nc-field">
+              <label for="whatsapp">WhatsApp (opcional)</label>
+              <input
+                type="tel"
+                id="whatsapp"
+                name="whatsapp"
+                placeholder="(00) 00000-0000"
+              />
+            </div>
+
+            <!-- Segmento -->
+            <div class="nc-field">
+              <label for="segmento">Segmento da empresa</label>
+              <select id="segmento" name="segmento" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="negocio-local">Negócio local</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="infoprodutos">Infoprodutos / Lançamentos</option>
+                <option value="prestacao-servicos">Prestação de serviços</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <!-- Volume de atendimentos -->
+            <div class="nc-field">
+              <label for="volume">Volume médio de atendimentos por mês</label>
+              <select id="volume" name="volume" required>
+                <option value="" disabled selected>Selecione uma faixa</option>
+                <option value="ate-200">Até 200 atendimentos</option>
+                <option value="200-a-1000">De 200 a 1.000 atendimentos</option>
+                <option value="acima-1000">Acima de 1.000 atendimentos</option>
+              </select>
+            </div>
+
+            <!-- Objetivo -->
+            <div class="nc-field">
+              <span class="nc-field-label">Objetivo principal com a Nexus Lab</span>
+              <div class="nc-checkbox-group">
+                <label>
+                  <input type="checkbox" name="objetivo" value="aumentar-vendas" />
+                  Aumentar vendas
+                </label>
+                <label>
+                  <input type="checkbox" name="objetivo" value="reduzir-atendimento" />
+                  Reduzir carga do atendimento
+                </label>
+                <label>
+                  <input type="checkbox" name="objetivo" value="atendimento-247" />
+                  Atender 24/7
+                </label>
+                <label>
+                  <input type="checkbox" name="objetivo" value="estruturar-processos" />
+                  Estruturar processos com IA
+                </label>
+                <label>
+                  <input type="checkbox" name="objetivo" value="outros" />
+                  Outros
+                </label>
+              </div>
+            </div>
+
+            <!-- Cenário atual -->
+            <div class="nc-field">
+              <label for="cenario">Conte rapidamente o cenário atual</label>
+              <textarea
+                id="cenario"
+                name="cenario"
+                rows="4"
+                placeholder="Ex.: hoje o atendimento é 100% manual pelo WhatsApp, recebemos muitos leads e não conseguimos responder todos..."
+              ></textarea>
+            </div>
+
+            <!-- Mensagem de erro simples de e-mail -->
+            <p class="nc-contact-error" id="nc-email-error" style="display:none">
+              Os e-mails não coincidem. Verifique e tente novamente.
+            </p>
+
+            <!-- Botão -->
+            <div class="nc-contact-actions">
+              <button type="submit" class="nc-btn nc-btn-primary">
+                Enviar solicitação
+              </button>
+              <p class="nc-contact-note">
+                Você receberá um e-mail confirmando o recebimento da sua solicitação.
+              </p>
+            </div>
+
+            <!-- Mensagem de sucesso (opcional, usada quando enviar via JS/AJAX) -->
+            <p
+              class="nc-contact-success"
+              id="nc-contact-success"
+              style="display:none"
+            >
+              Obrigado! Recebemos sua solicitação. Em breve você receberá um e-mail da Nexus Lab.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer igual ao da landing -->
+  <footer class="nc-footer">
+    <!-- pode copiar exatamente o footer da index.html -->
+    <div class="nc-container nc-footer-inner">
+      <div>
+        <div class="nc-logo">Nexus<span>Lab</span></div>
+        <p>Seu atendimento e vendas 24/7 com IA no WhatsApp.</p>
+      </div>
+      <div class="nc-footer-columns">
+        <div>
+          <h4>Empresa</h4>
+          <a href="index.html#topo">Início</a>
+          <a href="index.html#suite">Solução</a>
+          <a href="index.html#planos">Planos</a>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <a href="mailto:contato@nexuslab.com">contato@nexuslab.com</a>
+          <a href="https://wa.me/5599999999999" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="nc-footer-bottom">
+      <div class="nc-container">
+        <p>© 2025 Nexus Lab.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="nc-toast-container">
+    <div class="nc-toast" id="nc-toast">
+      <span class="nc-toast-icon" id="nc-toast-icon"></span>
+      <span class="nc-toast-text" id="nc-toast-text"></span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1929 @@
+:root {
+  --nc-bg: #f3f4f6;
+  --nc-bg-dark: #0f172a;
+  --nc-card: #ffffff;
+  --nc-border: #e5e7eb;
+  --nc-text: #0f172a;
+  --nc-muted: #6b7280;
+  --nc-primary: #7c3aed;   /* roxo moderno */
+  --nc-primary-soft: #ede9fe;
+  --nc-radius-lg: 18px;
+  --nc-radius-md: 14px;
+  --nc-radius-sm: 10px;
+  --nc-shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+  --nc-shadow-card: 0 16px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* RESET SIMPLES */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--nc-text);
+  background: var(--nc-bg);
+  line-height: 1.6;
+}
+
+/* LAYOUT BASE */
+.nc-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* HEADER */
+.nc-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(148, 163, 184, 0.12);
+  border-bottom: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Logo e menu para fundo escuro */
+.nc-logo-main,
+.nc-logo-accent,
+.nc-nav a {
+  transition: color 0.25s ease;
+}
+
+.nc-header-dark .nc-logo-main,
+.nc-header-dark .nc-logo-accent {
+  color: #ffffff;
+}
+
+.nc-header-dark .nc-nav a {
+  color: #e5e7eb;
+}
+
+/* Estado claro: quando o fundo é branco/clarinho */
+.nc-header-light {
+  background: rgba(249, 250, 251, 0.9);      /* quase branco */
+}
+
+/* Botão no header em fundo claro */
+.nc-header-light .nc-btn-outline {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(148, 163, 184, 0.6);
+  color: #111827;                 /* texto preto/quase preto */
+}
+
+.nc-header-light .nc-btn-outline:hover {
+  background: #ffffff;
+  border-color: #111827;
+  color: #111827;
+}
+
+.nc-header-light .nc-logo-main,
+.nc-header-light .nc-logo-accent {
+  color: #0f172a;                            /* texto escuro */
+}
+
+.nc-header-light .nc-nav a {
+  color: #111827;
+}
+
+.nc-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.nc-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* NEXUS branco, CONTACT roxo */
+.nc-logo-main {
+  color: #ffffff;
+}
+
+.nc-logo-accent {
+  color: #ffffff;   /* CONTACT branco também */
+}
+
+/* Menu mais visível em cima do gradiente */
+.nc-nav {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.nc-nav a {
+  color: #e5e7eb;              /* claro */
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.nc-nav a:hover {
+  color: #ffffff;              /* branco no hover */
+}
+
+
+/* BOTÕES */
+.nc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nc-btn-primary {
+  background: var(--nc-primary);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(124, 58, 237, 0.35);
+}
+
+.nc-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.45);
+}
+
+.nc-btn-outline {
+  border-color: rgba(226, 232, 240, 0.7);
+  color: #f9fafb;
+  background: rgba(15, 23, 42, 0.2);
+}
+
+.nc-btn-outline:hover {
+  border-color: #ffffff;
+  background: rgba(15, 23, 42, 0.35);
+}
+
+
+.nc-btn-outline:hover {
+  border-color: var(--nc-primary);
+  color: var(--nc-primary);
+}
+
+.nc-btn-ghost {
+  background: transparent;
+  color: var(--nc-text);
+}
+
+.nc-btn-ghost:hover {
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.nc-btn-full {
+  width: 100%;
+}
+
+.nc-btn-large {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+}
+
+.nc-hero .nc-container {
+  padding-top: 120px;
+}
+
+.nc-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #020617 0%,        /* topo quase preto */
+    #020617 12%,
+    #030712 20%,
+    #040816 32%,
+    #020617 42%,
+    #020617 52%,
+    #05081b 60%,
+    #020617 70%,
+    #020617 80%,
+    #020617 88%,
+    #020617 92%,
+    #020617 96%,
+    #020617 100%
+  ),
+  radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.16) 0, transparent 55%),
+  radial-gradient(circle at 80% 30%, rgba(129, 140, 248, 0.18) 0, transparent 55%),
+  radial-gradient(circle at 50% 90%, rgba(147, 51, 234, 0.20) 0, transparent 60%);
+  opacity: 0.98;
+  z-index: -1;
+}
+
+.nc-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+  gap: 3.5rem;
+  align-items: center;
+  color: #e5e7eb;
+}
+
+/* GARANTE QUE A HERO É O REFERENCIAL */
+.nc-hero {
+  position: relative;
+  min-height: calc(100vh + 72px); /* ocupa a tela inteira + área do header */
+  display: flex;
+  align-items: center;
+  padding: 4rem 0 4rem;
+  margin-top: -72px;              /* puxa a hero para cima, atrás do header */
+  overflow: hidden;
+}
+
+
+/* título flutuando sobre o robô */
+.nc-hero-title {
+  position: absolute;
+  top: 10%;          /* ajusta a altura: mais alto ou mais baixo */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 720px;
+  font-size: 2.8rem;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+/* subtítulo logo abaixo do título, centralizado */
+.nc-hero-subtitle {
+  position: absolute;
+  top: 23%;              /* ajusta a altura para ficar logo abaixo do h1 */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 640px;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  opacity: 0.9;
+}
+
+/* Botão roxo solto na hero */
+.nc-hero-btn-whatsapp {
+  position: absolute;
+  top: 32%;          /* logo abaixo do subtítulo, ajuste fino aqui */
+  left: 50%;         /* centraliza na horizontal */
+  transform: translateX(-50%);
+  padding: 0.9rem 2.4rem;
+  font-size: 1rem;
+}
+
+/* Hover específico da hero – mantém o centro */
+.nc-hero-btn-whatsapp:hover {
+  transform: translateX(-50%) translateY(-1px);  /* combina X e Y */
+  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.45);
+}
+
+.nc-hero-whatsapp-card {
+  position: absolute;
+  top: 30%;
+  right: 8%;
+}
+
+.nc-hero-metric-card {
+  position: absolute;
+  top: 78%;
+  right: 28%;
+}
+
+/* Card extra, lado esquerdo do robô */
+.nc-hero-secondary-card {
+  position: absolute;
+  top: 35%;      /* altura – ajuste fino se quiser */
+  left: 10%;     /* entra na área vazia à esquerda */
+}
+
+/* Card sobreposto, embaixo e um pouco deslocado */
+.nc-hero-layered-card {
+  position: absolute;
+  top: 50%;          /* abaixo do secundário */
+  left: 20%;         /* um pouco mais para a direita */
+  transform: translateY(8px);  /* cria sensação de sobreposição */
+  z-index: 2;        /* fica por cima visualmente */
+}
+
+/* Pílulas horizontais (tipo Grammarly / executives) */
+.nc-hero-pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(15, 23, 42, 0.35)
+  );
+  border: 1px solid rgba(248, 250, 252, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: #f9fafb;
+  font-size: 0.8rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+}
+
+/* ícone dentro da pílula */
+.nc-hero-pill-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* posição da pílula de cima */
+.nc-hero-pill-top {
+  top: 76%;
+  right: 65%;
+}
+
+/* posição da pílula de baixo */
+.nc-hero-pill-bottom {
+  top: 68%;
+  right: 10%;
+}
+
+/* Coluna vertical de ícones ao lado dos cards */
+.nc-hero-vertical-icons {
+  position: absolute;
+  top: 35%;
+  right: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  padding: 0.6rem 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(15, 23, 42, 0.45)
+  );
+  border: 1px solid rgba(248, 250, 252, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.55);
+}
+
+/* botões individuais da coluna */
+.nc-hero-icon-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nc-hero-icon-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* deixa os ícones bem próximos de branco */
+.nc-hero-pill-icon,
+.nc-hero-icon-btn img {
+  filter: brightness(0) invert(1);
+}
+
+.nc-hero-cta .nc-btn-primary {
+  padding: 0.9rem 2.4rem;
+  font-size: 1rem;
+}
+
+.nc-hero-text h1 {
+  font-size: 2.8rem;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+}
+
+.nc-hero-text p {
+  color: #e5e7eb;
+  max-width: 32rem;
+}
+
+.nc-hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 1.8rem 0 1.2rem;
+}
+
+.nc-hero-subnote {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+/* HERO VISUAL */
+.nc-hero-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.nc-hero-card {
+  position: relative;
+  border-radius: var(--nc-radius-lg);
+  padding: 1rem 1.1rem;
+
+  /* vidro translúcido */
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(15, 23, 42, 0.40)
+  );
+  border: 1px solid rgba(248, 250, 252, 0.55);     /* linha fina clara */
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.55);  /* sombra mais suave e profunda */
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  overflow: hidden;
+}
+
+.nc-hero-card-main {
+  min-height: 260px;
+}
+
+.nc-hero-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #cbd5f5;
+  margin-bottom: 0.8rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+}
+
+.dot-green {
+  background: #22c55e;
+}
+
+.nc-hero-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.nc-chat-bubble {
+  max-width: 85%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 14px;
+  font-size: 0.9rem;
+}
+
+.nc-chat-bubble-user {
+  align-self: flex-start;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.nc-chat-bubble-bot {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+}
+
+.nc-hero-card-metric {
+  align-self: flex-end;
+  max-width: 220px;
+}
+
+.nc-metric-label {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.nc-metric-value {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+.nc-metric-sub {
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+/* TRUST BAR */
+.nc-trust {
+  padding: 1.8rem 0 1.4rem;
+  background: #f9fafb;
+  border-bottom: 1px solid var(--nc-border);
+}
+
+.nc-trust-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.nc-trust-title {
+  font-size: 0.9rem;
+  color: var(--nc-muted);
+}
+
+.nc-trust-logos {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.nc-trust-logos span {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px dashed #d1d5db;
+  background: #ffffff;
+}
+
+/* Faixa de logos tipo Superhuman */
+.nc-trusted {
+  background: #f7f8fb;           /* mantém ideia de faixa clara */
+  padding: 40px 0 48px;
+}
+
+.nc-trusted-inner {
+  max-width: 1120px;             /* espaço nas laterais */
+  margin: 0 auto;
+  padding: 0 32px;               /* respiro lateral */
+}
+
+.nc-trusted-title {
+  text-align: center;
+  font-size: 20px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+.nc-trusted-title strong {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.nc-trusted-logos {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: center;
+  gap: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
+  padding: 18px 28px;
+}
+
+/* cada logo */
+.nc-trusted-logos img {
+  max-height: 40px;
+  width: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+}
+
+.nc-trusted-logos img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .nc-trusted-logos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nc-trusted-inner {
+    padding: 0 16px;
+  }
+
+  .nc-trusted-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px 18px;
+  }
+
+  .nc-trusted-title {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+/* espaçamento extra abaixo do card de WhatsApp */
+.nc-trusted-below-whatsapp {
+  background: transparent;
+  padding-top: 1.0rem;
+  padding-bottom: 1.8rem;
+}
+
+/* variação que usa banner único */
+.nc-trusted-logos-banner {
+  display: block;
+  width: 100%;
+  padding: 0;              /* card branco já tem padding próprio */
+  min-height: 0;           /* deixa a altura ser a da imagem */
+}
+
+.nc-trusted-logos.nc-trusted-logos-banner {
+  position: relative;
+  overflow: hidden;      /* corta qualquer coisa que passe do raio */
+  border-radius: 24px;   /* mesmo raio dos outros cards */
+  padding: 0;            /* sem padding interno */
+  min-height: 150px;  
+}
+
+/* sobrescreve as regras antigas de logos para o banner */
+.nc-trusted-logos-banner img {
+  display: block;
+  width: 100%;           /* encaixa na largura do card */
+  height: 100%;          /* preenche verticalmente */
+  object-fit: cover;     /* corta o excesso mantendo proporção */
+  border-radius: 0;      /* raio vem do container, não da imagem */
+  min-height: 150px;  
+}
+
+/* SEÇÃO GENÉRICA */
+.nc-section-header {
+  text-align: left;
+  margin-bottom: 2.4rem;
+}
+
+.nc-section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.nc-section-header p {
+  color: var(--nc-muted);
+  max-width: 32rem;
+}
+
+/* SUITE */
+.nc-suite {
+  padding: 4rem 0 3.5rem;
+}
+
+/* Card grande com 2 colunas */
+.nc-suite-grid-single {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* Reaproveita o estilo dos cards da suite */
+.nc-suite-chat-copy,
+.nc-suite-chat-visual {
+  background: var(--nc-card);
+  border-radius: var(--nc-radius-lg);
+  padding: 1.6rem 1.7rem;
+  box-shadow: var(--nc-shadow-card);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+/* Centraliza o card de conversa */
+.nc-suite-chat-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card de conversa tipo WhatsApp */
+.nc-whatsapp-card {
+  width: 100%;
+  max-width: 340px;
+  background: radial-gradient(circle at 0% 0%, #4b5563 0, transparent 45%),
+              radial-gradient(circle at 100% 100%, #6366f1 0, transparent 45%),
+              #1f2937;
+  border-radius: 22px;
+  padding: 12px 14px 10px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #e5e7eb;
+  font-size: 0.86rem;
+}
+
+/* topo: “WhatsApp – Nexus Contact” */
+.nc-whatsapp-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #d1d5db;
+  opacity: 0.95;
+  margin-bottom: 4px;
+}
+
+.nc-whatsapp-header-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.9);
+}
+
+/* área das mensagens */
+.nc-whatsapp-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* bolhas */
+.nc-whatsapp-bubble {
+  max-width: 82%;
+  padding: 6px 9px;
+  border-radius: 16px;
+  line-height: 1.35;
+}
+
+.nc-whatsapp-bubble.user {
+  align-self: flex-start;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 14px 14px 14px 4px;
+}
+
+.nc-whatsapp-bubble.bot {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #f9fafb;
+  border-radius: 14px 14px 4px 14px;
+}
+
+/* barra de digitando */
+.nc-whatsapp-typing {
+  display: none;
+  align-self: flex-end;
+  margin-top: 4px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  gap: 4px;
+  align-items: center;
+}
+
+.nc-whatsapp-typing.left {
+  align-self: flex-start;
+}
+
+.nc-whatsapp-typing.right {
+  align-self: flex-end;
+}
+
+.nc-btn-small {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+}
+
+.nc-suite-flow-btn {
+  margin-top: 1.8rem;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #ede9fe, #e0e7ff);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #4b5563;
+  font-size: 1rem;      /* maior */
+  font-weight: 700;     /* negrito */
+  text-align: center;
+  box-shadow: 0 14px 30px rgba(148, 163, 184, 0.25);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+
+/* ícone “play/chat” simples usando pseudo-elemento */
+.nc-suite-flow-btn::before {
+  content: "▶";
+  font-size: 0.8rem;
+  color: #4c1d95;
+}
+
+/* hover mais destacado */
+.nc-suite-flow-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.35);
+  background: linear-gradient(135deg, #ddd6fe, #c7d2fe);
+}
+
+.nc-suite-note {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  border: 1px dashed #e5e7eb;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.nc-suite-note-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+}
+
+.nc-suite-note {
+  display: none;
+}
+
+.nc-suite-note + .nc-suite-note {
+  margin-top: 0.6rem;
+}
+
+.nc-whatsapp-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  animation: nc-dot 1s infinite ease-in-out;
+}
+.nc-whatsapp-dot:nth-child(2) { animation-delay: 0.15s; }
+.nc-whatsapp-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes nc-dot {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+
+/* Responsivo: empilha texto + conversa no mobile */
+@media (max-width: 900px) {
+  .nc-suite-grid-single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.nc-suite-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.nc-suite-item {
+  background: var(--nc-card);
+  border-radius: var(--nc-radius-lg);
+  padding: 1.6rem 1.7rem;
+  box-shadow: var(--nc-shadow-card);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+.nc-suite-subtitle {
+  color: var(--nc-muted);
+  margin: 0.4rem 0 0.8rem;
+  font-size: 0.92rem;
+  color: #000000;
+}
+
+.nc-lead-strong {
+  font-weight: 400;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.nc-suite-list {
+  list-style: none;
+  font-size: 0.92rem;
+  color: #4b5563;
+}
+
+.nc-benefits-list {
+  list-style: none;
+  margin-top: 0.75rem;
+  padding-left: 0;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.nc-benefits-list li {
+  position: relative;
+  padding-left: 18px;      /* espaço para a bolinha */
+}
+
+.nc-benefits-list li + li {
+  margin-top: 0.35rem;
+}
+
+/* bolinha roxa ao lado esquerdo */
+.nc-benefits-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #8b5cf6;
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.6);
+}
+
+/* bullets roxos ao lado esquerdo de cada item da lista do módulo WhatsApp */
+.nc-suite-chat-copy .nc-suite-list {
+  list-style: none;              /* remove o bullet padrão */
+  padding-left: 0;
+}
+
+.nc-suite-chat-copy .nc-suite-list li {
+  position: relative;
+  padding-left: 18px;            /* espaço pro pontinho */
+}
+
+/* o pontinho roxo */
+.nc-suite-chat-copy .nc-suite-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;                   /* centraliza verticalmente */
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #8b5cf6;           /* roxo principal */
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.6);
+}
+
+/* bolha que contém o QR */
+/* QR menor dentro da bolha do bot */
+.nc-whatsapp-qr {
+  margin-top: 6px;
+  display: inline-block;
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.nc-qr-placeholder {
+  width: 70px;
+  height: 70px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px #111827 inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.nc-qr-block {
+  position: absolute;
+  background: #111827;
+}
+
+.nc-qr-block.corner {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 3px #ffffff inset;
+}
+
+.nc-suite-list li + li {
+  margin-top: 0.4rem;
+}
+
+.nc-suite-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.nc-suite-tags span {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--nc-primary-soft);
+  color: #4c1d95;
+}
+
+/* MÉTRICAS */
+.nc-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.nc-metric-card {
+  background: #f9fafb;
+  border-radius: var(--nc-radius-md);
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #e5e7eb;
+}
+
+/* COMO FUNCIONA */
+.nc-how {
+  padding: 3.5rem 0 3.5rem;
+}
+
+.nc-how-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.nc-how-text p {
+  color: var(--nc-muted);
+  margin-bottom: 1.4rem;
+}
+
+.nc-steps {
+  list-style: none;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.nc-steps li {
+  padding: 0.8rem 0.9rem;
+  border-radius: var(--nc-radius-md);
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.nc-steps h4 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.nc-steps p {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.nc-how-visual {
+  display: flex;
+  align-items: center;
+}
+
+.nc-how-card {
+  background: linear-gradient(135deg, #0f172a, #1f2937);
+  color: #e5e7eb;
+  border-radius: var(--nc-radius-lg);
+  padding: 1.6rem 1.7rem;
+  box-shadow: var(--nc-shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.nc-how-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #a5b4fc;
+  margin-bottom: 0.6rem;
+}
+
+.nc-how-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.nc-how-card ul {
+  list-style: none;
+  font-size: 0.92rem;
+}
+
+.nc-how-card li + li {
+  margin-top: 0.35rem;
+}
+
+/* PLANOS */
+.nc-plans {
+  padding: 3.5rem 0 3.5rem;
+}
+
+.nc-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.nc-plan-card {
+  background: #ffffff;
+  border-radius: var(--nc-radius-lg);
+  padding: 1.7rem 1.6rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: var(--nc-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.nc-plan-featured {
+  border-color: var(--nc-primary);
+  position: relative;
+}
+
+.nc-plan-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--nc-primary-soft);
+  color: #4c1d95;
+}
+
+.nc-plan-price {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.nc-plan-price span {
+  font-size: 0.8rem;
+  color: var(--nc-muted);
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+
+.nc-plan-sub {
+  font-size: 0.9rem;
+  color: var(--nc-muted);
+}
+
+.nc-plan-list {
+  list-style: none;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.nc-plan-list li + li {
+  margin-top: 0.3rem;
+}
+
+.nc-about-section {
+  padding: 4rem 0 3.5rem;
+  background: #f9fafb;
+}
+
+.nc-about-header {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 2.6rem;
+}
+
+.nc-about-logo-block {
+  flex-shrink: 0;
+}
+
+.nc-about-logo {
+  max-width: 250px;
+  height: auto;
+  filter: drop-shadow(0 18px 40px rgba(15, 23, 42, 0.25));
+}
+
+/* ============================
+   Página de contato
+============================ */
+.nc-contact-section {
+  padding: 4rem 0 4rem;
+  background: #f3f4f6;
+}
+
+.nc-contact-section > .nc-container {
+  max-width: 720px;
+}
+
+.nc-contact-card {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  border-radius: var(--nc-radius-lg);
+  box-shadow: var(--nc-shadow-card);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  padding: 2.2rem 2.4rem 2.3rem;
+}
+
+.nc-contact-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.nc-contact-header h1 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.nc-contact-header p {
+  max-width: 34rem;
+  margin: 0 auto;
+  color: var(--nc-muted);
+  font-size: 0.98rem;
+}
+
+/* Formulário */
+.nc-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.nc-field label,
+.nc-field .nc-field-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.nc-field input,
+.nc-field select,
+.nc-field textarea {
+  border-radius: 0.6rem;
+  border: 1px solid #d1d5db;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  background: #f9fafb;
+}
+
+.nc-field input:focus,
+.nc-field select:focus,
+.nc-field textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25);
+  background: #ffffff;
+}
+
+/* E-mail + confirmação lado a lado no desktop */
+.nc-field-inline {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+/* Checkboxes objetivo */
+.nc-checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 1.2rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.nc-checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nc-checkbox-group input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
+/* Ações */
+.nc-contact-actions {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.nc-contact-note {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Mensagens */
+.nc-contact-error {
+  font-size: 0.85rem;
+  color: #b91c1c;
+}
+
+.nc-contact-success {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #166534;
+}
+
+/* Responsivo */
+@media (max-width: 720px) {
+  .nc-contact-section > .nc-container {
+    padding-inline: 1.25rem;
+  }
+
+  .nc-contact-card {
+    padding: 1.8rem 1.6rem 2rem;
+  }
+
+  .nc-field-inline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nc-checkbox-group {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.nc-logo-link {
+  text-decoration: none;
+}
+
+/* Header da página de contato */
+.nc-header--contact {
+  background: #060f36; /* igual ao header principal */
+}
+
+.nc-header-inner--center {
+  justify-content: center;
+}
+
+
+/* Timeline horizontal */
+.nc-about-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 2.4rem;
+}
+
+.nc-about-card {
+  background: var(--nc-card);
+  border-radius: var(--nc-radius-lg);
+  box-shadow: var(--nc-shadow-card);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  padding: 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nc-about-card-media {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ede9fe, #e0f2fe);
+  min-height: 180px;
+}
+
+.nc-about-lottie {
+  width: 100%;
+  height: 220px;       /* ajusta a altura que quiser */
+}
+
+.nc-about-card-body h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: #111827;
+}
+
+.nc-about-card-body h4 {
+  font-size: 0.95rem;
+  margin: 0.8rem 0 0.25rem;
+  color: #4b5563;
+}
+
+.nc-about-card-body p {
+  font-size: 0.93rem;
+  color: #4b5563;
+}
+
+/* Lista de valores com bolinhas roxas brilhantes */
+.nc-about-values-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.4rem 0 0.6rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.nc-about-values-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.nc-about-values-list li + li {
+  margin-top: 0.25rem;
+}
+
+.nc-about-values-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #8b5cf6;
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.7);
+}
+
+/* Destaques numéricos */
+.nc-about-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-bottom: 2.2rem;
+}
+
+.nc-about-metric {
+  background: linear-gradient(135deg, #ede9fe, #e0e7ff);
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.nc-about-metric-number {
+  font-weight: 700;
+  color: #4c1d95;
+}
+
+.nc-about-metric-label {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* CTA final */
+.nc-about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+.nc-about-cta p {
+  font-size: 0.98rem;
+  color: #111827;
+}
+
+/* Aproveita botão padrão se já existir .nc-btn .nc-btn-primary */
+.nc-about-cta .nc-btn-primary {
+  padding: 0.9rem 1.6rem;
+  font-size: 0.95rem;
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+  .nc-about-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nc-about-timeline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Toasts (mensagens flutuantes) */
+.nc-toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.nc-toast {
+  pointer-events: auto;
+  min-width: 260px;
+  max-width: 360px;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #f9fafb;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nc-toast--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nc-toast--success {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+.nc-toast--error {
+  background: linear-gradient(135deg, #b91c1c, #ef4444);
+}
+
+.nc-toast-icon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.18);
+  font-size: 0.85rem;
+}
+
+
+
+/* FAQ */
+.nc-faq {
+  padding: 3.5rem 0 3.5rem;
+}
+
+.nc-faq h2 {
+  margin-bottom: 1.6rem;
+}
+
+.nc-faq-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.nc-faq details {
+  background: #ffffff;
+  border-radius: var(--nc-radius-md);
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem 0.9rem;
+}
+
+.nc-faq summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+}
+
+.nc-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.nc-faq p {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* CTA FINAL */
+.nc-cta {
+  padding: 3rem 0 3.2rem;
+  background: radial-gradient(circle at 0% 0%, #7c3aed 0, transparent 45%),
+              radial-gradient(circle at 100% 100%, #6366f1 0, transparent 45%),
+              #111827;
+  color: #e5e7eb;
+}
+
+.nc-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nc-cta h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.nc-cta p {
+  color: #cbd5f5;
+}
+
+/* FOOTER */
+.nc-footer {
+  background: #020617;
+  color: #9ca3af;
+  padding-top: 2rem;
+}
+
+.nc-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid #111827;
+}
+
+.nc-footer-columns {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nc-footer h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: #e5e7eb;
+}
+
+.nc-footer a {
+  display: block;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-decoration: none;
+  margin-top: 0.25rem;
+}
+
+.nc-footer a:hover {
+  color: #e5e7eb;
+}
+
+.nc-footer-bottom {
+  padding: 0.9rem 0 1.2rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ANIMAÇÕES DE ENTRADA */
+.nc-animate {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.nc-animate.nc-animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nc-animate-delay {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+}
+
+.nc-animate-delay.nc-animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVO */
+@media (max-width: 960px) {
+  .nc-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nc-hero-visual {
+    order: -1;
+  }
+
+  .nc-suite-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nc-how-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nc-plans-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nc-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nc-footer-inner {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .nc-header-inner {
+    gap: 1rem;
+  }
+
+  .nc-nav {
+    display: none; /* simplificar no mobile por enquanto */
+  }
+
+  .nc-hero-text h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Camada do robô no fundo da hero */
+.nc-hero-robot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;          /* não atrapalha cliques */
+  display: flex;
+  align-items: flex-end;         /* encosta embaixo */
+  justify-content: center;       /* centralizado como o homem do Superhuman */
+  z-index: -0;                   /* acima do .nc-hero-bg (z-index:-1), abaixo do conteúdo (z-index padrão 0) */
+}
+
+.nc-hero-robot img {
+  max-width: 600px;              /* ajusta o tamanho do robô */
+  width: 35vw;                   /* responsivo */
+  transform: translateY(0px);   /* empurra um pouco para baixo, como na referência */
+  object-fit: contain;
+  filter: drop-shadow(0 24px 60px rgba(15, 23, 42, 0.9));
+  opacity: 0.95;
+}
+
+.nc-cursor-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* bolinha individual */
+.nc-cursor-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #ffffff, rgba(255, 255, 255, 0));
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
+}
+
+/* ============================
+   Resultados em números
+   ============================ */
+
+.nc-results-section {
+  padding: 3rem 0 3.2rem;
+  background: #f3f4f6;
+}
+
+.nc-results-section > .nc-container {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  border-radius: var(--nc-radius-lg);
+  box-shadow: var(--nc-shadow-card);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  padding: 2rem 2.4rem 2.3rem;
+}
+
+.nc-results-header {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 1.8rem;
+}
+
+.nc-results-header h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Carrossel */
+
+.nc-results-carousel {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nc-results-track {
+  position: relative;
+  flex: 1;
+  height: 580px;             /* altura fixa do trilho */
+  overflow: hidden;
+}
+
+/* Slides */
+
+.nc-results-slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 33.333%;
+  transform: translateX(-50%) scale(0.94);
+  opacity: 0;
+  filter: blur(0.7px);
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    filter 0.35s ease;
+  pointer-events: none;
+}
+
+.nc-results-slide--left {
+  transform: translateX(-150%) scale(0.94);
+  opacity: 0.5;
+}
+
+.nc-results-slide--center {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+.nc-results-slide--right {
+  transform: translateX(50%) scale(0.94);
+  opacity: 0.5;
+}
+
+/* Card interno */
+
+.nc-results-card {
+  background: #ffffff;
+  border-radius: var(--nc-radius-lg);
+  box-shadow: var(--nc-shadow-card);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  padding: 1.4rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.nc-results-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* “Gráfico” simples */
+
+.nc-results-graph {
+  position: relative;
+  height: 350px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f3f4ff 0%, #ffffff 70%);
+  overflow: hidden;
+}
+
+.nc-results-lottie {
+  position: absolute;
+  inset: 40px 40px 80px 40px; /* top right bottom left */
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(13.0);
+}
+
+.nc-results-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Setas */
+
+.nc-results-arrow {
+  border: none;
+  background: rgba(15, 23, 42, 0.06);
+  color: #111827;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  font-size: 1.1rem;
+}
+
+.nc-results-arrow:hover {
+  background: rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+/* Responsivo: 1 slide por vez no mobile */
+
+@media (max-width: 960px) {
+  .nc-results-track {
+    height: 260px;
+  }
+  .nc-results-slide {
+    width: 80%;
+  }
+}
